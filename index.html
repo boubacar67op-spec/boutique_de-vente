@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Boutique en ligne</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 0; background:#f6f6f6; }
+header { background:#111; color:#fff; padding:1rem 2rem; display:flex; justify-content:space-between; }
+.products { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:1.5rem; padding:2rem; }
+.card { background:#fff; border-radius:8px; padding:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+button { background:#111; color:#fff; border:none; padding:0.5rem 1rem; cursor:pointer; }
+footer { background:#222; color:#fff; text-align:center; padding:1rem; }
+</style>
+</head>
+<body>
+<header>
+<h2>Ma Boutique</h2>
+<div>🛒 Panier (<span id="cart-count">0</span>)</div>
+</header>
+
+
+<main class="products" id="products"></main>
+
+
+<footer>© 2026 - Boutique en ligne</footer>
+
+
+<script>
+const products = [
+{ id:1, name:"Produit A", price:25 },
+{ id:2, name:"Produit B", price:40 },
+{ id:3, name:"Produit C", price:15 }
+];
+
+
+let cart = 0;
+const container = document.getElementById('products');
+const cartCount = document.getElementById('cart-count');
+
+
+products.forEach(p => {
+const div = document.createElement('div');
+div.className = 'card';
+div.innerHTML = `<h3>${p.name}</h3><p>${p.price} €</p><button>Ajouter au panier</button>`;
+div.querySelector('button').onclick = () => {
+cart++;
+cartCount.textContent = cart;
+};
+container.appendChild(div);
+});
+</script>
+</body>
+</html>
